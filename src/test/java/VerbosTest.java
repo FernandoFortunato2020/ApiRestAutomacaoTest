@@ -9,32 +9,75 @@ public class VerbosTest {
     public void testGet() {
         given()
                 .when()
-                .get("https://jsonplaceholder.typicode.com/comments/1")
+                .get("https://jsonplaceholder.typicode.com/users")
                 .then()
-                .statusCode(200)
-                .body("id", equalTo(1))
-                .body("name", equalTo("id labore ex et quam laborum"))
-                .body("email", equalTo("Eliseo@gardner.biz"));
+                .statusCode(200);
+
     }
 
     @Test
     public void testPost() {
         given()
-                .body("{\"userId\":\"11\",\"id\":\"101\",\"title\": \"Post Post Post \",\"body\": \"Very Good today Post\"}")
+
+                .body("{\n" +
+                        "        \"id\": 1,\n" +
+                        "        \"name\": \"Fernando Fortunato\",\n" +
+                        "        \"username\": \"FerFortunato\",\n" +
+                        "        \"email\": \"fernandofortunato@hotmail.com\",\n" +
+                        "        \"address\": {\n" +
+                        "            \"street\": \"Frederico Maurer\",\n" +
+                        "            \"suite\": \"Apt. 208\",\n" +
+                        "            \"city\": \"Curitiba\",\n" +
+                        "            \"zipcode\": \"81630-020\",\n" +
+                        "            \"geo\": {\n" +
+                        "                \"lat\": \"-40.7779\",\n" +
+                        "                \"lng\": \"80.8886\"\n" +
+                        "            }\n" +
+                        "        },\n" +
+                        "        \"phone\": \"5-123-876-1111 x56442\",\n" +
+                        "        \"website\": \"teste.org\",\n" +
+                        "        \"company\": {\n" +
+                        "            \"name\": \"Parana\",\n" +
+                        "            \"catchPhrase\": \"Multi-layered client-server neural-net\",\n" +
+                        "            \"bs\": \"harness real-time e-markets\"\n" +
+                        "        }\n" +
+                        "    }'")
                 .when()
-                .post("https://jsonplaceholder.typicode.com/posts")
+                .post("https://jsonplaceholder.typicode.com/users")
                 .then()
                 .statusCode(201)
-                .body("id", equalTo(101));
+                .body("id", equalTo(11));
 
     }
 
     @Test
     public void testPut() {
         given()
-                .body("{\"title\": \"Put Put Put\",\"body\": \"Very Good today Put\"}")
+                .body("{\n" +
+                        "        \"id\": 1,\n" +
+                        "        \"name\": \"Fernando Fortunato\",\n" +
+                        "        \"username\": \"FerFortunato\",\n" +
+                        "        \"email\": \"fernandofortunato@hotmail.com\",\n" +
+                        "        \"address\": {\n" +
+                        "            \"street\": \"Frederico Maurer\",\n" +
+                        "            \"suite\": \"Apt. 208\",\n" +
+                        "            \"city\": \"Curitiba\",\n" +
+                        "            \"zipcode\": \"81630-020\",\n" +
+                        "            \"geo\": {\n" +
+                        "                \"lat\": \"-40.7779\",\n" +
+                        "                \"lng\": \"80.8886\"\n" +
+                        "            }\n" +
+                        "        },\n" +
+                        "        \"phone\": \"5-123-876-1111 x56442\",\n" +
+                        "        \"website\": \"teste.org\",\n" +
+                        "        \"company\": {\n" +
+                        "            \"name\": \"Parana\",\n" +
+                        "            \"catchPhrase\": \"Multi-layered client-server neural-net\",\n" +
+                        "            \"bs\": \"harness real-time e-markets\"\n" +
+                        "        }\n" +
+                        "    }'")
                 .when()
-                .put("http://jsonplaceholder.typicode.com/posts/1")
+                .put("https://jsonplaceholder.typicode.com/users")
                 .then()
                 .statusCode(200)
                 .body("id", equalTo(1));
@@ -44,7 +87,7 @@ public class VerbosTest {
     public void testDelete() {
         given()
                 .when()
-                .delete("https://jsonplaceholder.typicode.com/posts/100")
+                .delete("https://jsonplaceholder.typicode.com/users")
                 .then()
                 .statusCode(200);
     }
